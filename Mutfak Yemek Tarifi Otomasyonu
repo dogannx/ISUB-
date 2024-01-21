@@ -1,0 +1,589 @@
+#include "iostream"
+#include "fstream"
+
+using namespace std;
+void Yemek_tarifi_ekle();
+void Icecek_tarifi_ekle();
+void corba_tarifi_ekle();
+void tatli_tarifi_ekle();
+
+void ana_tarifi_oku();
+void icecek_tarifi_oku();
+void corba_tarifi_oku();
+void tatli_tarifi_oku();
+
+void ana_tarifite_ara();
+void icecek_tarifite_ara();
+void corba_tarifite_ara();
+void tatli_tarifite_ara();
+
+void ana_tarifte_sil();
+void icecek_tarifite_sil();
+void corba_tarifite_sil();
+void tatli_tarifite_sil();
+
+
+
+
+
+
+struct Ana_yemek_tarifi{
+    string adi;
+    string eklenecek_malzemeler;
+    string yapilisi;
+};
+struct Icecek_tarifleri{
+    string adi;
+    string eklenecek_malzemeler;
+    string yapilisi;
+};
+struct Corba_tarifleri{
+    string adi;
+    string eklenecek_malzemeler;
+    string yapilisi;
+};
+struct Tatli_tarifleri{
+    string adi;
+    string eklenecek_malzemeler;
+    string yapilisi;
+};
+
+Ana_yemek_tarifi yemek;
+Icecek_tarifleri icecek;
+Corba_tarifleri corba;
+Tatli_tarifleri tatli;
+
+
+int main(){
+    char secim3;
+    do {
+        cout<<"---------------------------------------------------------"<<endl;
+        cout<<"----------------HOŞGELDİNLİZ-----------------------------"<<endl;
+        cout<<"----------------1-Yemek Tarifi Ekle----------------------"<<endl;
+        cout<<"----------------2-Ana Yemekler---------------------------"<<endl;
+        cout<<"----------------3-İçecekler------------------------------"<<endl;
+        cout<<"----------------4-Çorbalar-------------------------------"<<endl;
+        cout<<"----------------5-Tatlılar-------------------------------"<<endl;
+        cout<<"----------------6-Ana Yemeklerde Tarifi Ara--------------"<<endl;
+        cout<<"----------------7-İçeceklerde Tarifi Ara-----------------"<<endl;
+        cout<<"----------------8-Çorbalarda Tarifi Ara------------------"<<endl;
+        cout<<"----------------9-Tatlılarda Tarifi Ara------------------"<<endl;
+        cout<<"----------------10-Ana Yemek Tarifi Sil------------------"<<endl;
+        cout<<"----------------11-İçecek Tarifi Sil---------------------"<<endl;
+        cout<<"----------------12-Çorba Tarifi Sil----------------------"<<endl;
+        cout<<"----------------13-Tatlı Tarifi Sil----------------------"<<endl;
+        cout<<"---------------------------------------------------------"<<endl;
+        cout<<"SEÇİMİNİZİ GİRİNİZ"<<endl;
+        int secim;
+        cin>>secim;
+        switch (secim) {
+            case 1:
+                cout<<"Yemek Ekleme"<<endl;
+                break;
+            case 2:
+                cout<<"Ana Yemekler"<<endl;
+                break;
+            case 3:
+                cout<<"İçecekler"<<endl;
+                break;
+            case 4:
+                cout<<"Çorbalar"<<endl;
+                break;
+            case 5:
+                cout<<"Tatlılar"<<endl;
+                break;
+            case 6:
+                cout<<"Ana Yemeklerde Tarifi Ara"<<endl;
+                break;
+            case 7:
+                cout<<"İçeceklerde Tarifi Ara"<<endl;
+                break;
+            case 8:
+                cout<<"Çorbalarda Tarifi Ara"<<endl;
+                break;
+            case 9:
+                cout<<"Tatlılarda Tarifi Ara"<<endl;
+                break;
+            case 10:
+                cout<<"Ana Yemek Tarifi Sil"<<endl;
+                break;
+            case 11:
+                cout<<"İçecek Tarifi Sil"<<endl;
+                break;
+            case 12:
+                cout<<"Çorba Tarifi Sil"<<endl;
+                break;
+            case 13:
+                cout<<"Tatlı Tarifi Sil"<<endl;
+                break;
+        }
+
+        system("cls");
+        if (secim == 1) {
+            cout<<"|--------------------------------------------|"<<endl;
+            cout<<"|----------------1-Ana Yemekler--------------|"<<endl;
+            cout<<"|----------------2-İçecekler-----------------|"<<endl;
+            cout<<"|----------------3-Çorbalar------------------|"<<endl;
+            cout<<"|----------------4-Tatlılar------------------|"<<endl;
+            cout<<"|--------------------------------------------|"<<endl;
+            cout << "Hangi Türde Yemek Tarifi Eklemek İstersiniz? Lütfen Yazınız..." << endl;
+            int secim2;
+            cin >> secim2;
+            switch (secim2) {
+                case 1:
+                    cout << "Ana Yemekler" << endl;
+                    Yemek_tarifi_ekle();
+                    cout << "Ana Menüye Dönmek İster misiniz?(e/h)" << endl;
+                    cin >> secim3;
+                    break;
+                case 2:
+                    cout << "İçecekler" << endl;
+                    Icecek_tarifi_ekle();
+                    cout << "Ana Menüye Dönmek İster misiniz?(e/h)" << endl;
+                    cin >> secim3;
+                    break;
+                case 3:
+                    cout << "Çorbalar" << endl;
+                    corba_tarifi_ekle();
+                    cout << "Ana Menüye Dönmek İster misiniz?(e/h)" << endl;
+                    cin >> secim3;
+                    break;
+                case 4:
+                    cout << "Tatlılar" << endl;
+                    tatli_tarifi_ekle();
+                    cout << "Ana Menüye Dönmek İster misiniz?(e/h)" << endl;
+                    cin >> secim3;
+                    break;
+            }
+        } else if (secim == 2 || secim == 3 || secim == 4 || secim == 5 || secim == 6 ||secim == 7 || secim == 8||secim == 9 ||secim == 10 || secim == 11||secim == 12 || secim == 13) {
+            if (secim==2)
+                ana_tarifi_oku();
+            else if(secim==3)
+                icecek_tarifi_oku();
+            else if(secim==4)
+                corba_tarifi_oku();
+            else if(secim==5)
+                tatli_tarifi_oku();
+            else if(secim==6)
+                ana_tarifite_ara();
+            else if(secim==7)
+                icecek_tarifite_ara();
+            else if(secim==8)
+                corba_tarifite_ara();
+            else if(secim==9)
+                tatli_tarifite_ara();
+            else if(secim==10)
+                ana_tarifte_sil();
+            else if(secim==11)
+                icecek_tarifite_sil();
+            else if(secim==12)
+                corba_tarifite_sil();
+            else if(secim==13)
+                tatli_tarifite_sil();
+
+
+            cout << "Ana Menüye Dönmek İster misiniz?(e/h)" << endl;
+            cin >> secim3;
+        }
+        else
+            cout<<"Yanlış Bir Sayı Girdiniz...";
+    } while (secim3=='e' || secim3=='E');
+
+    return 0;
+}
+
+
+void Yemek_tarifi_ekle(){
+    ofstream yaz("anayemektarifi.txt",ios::app);
+
+    char secim;
+    do{
+        cout<<"Yemek Adını Giriniz."<<endl;
+        cin.ignore();
+        getline(cin,yemek.adi);
+
+        cout<<"Eklenecek Malzemeleri Giriniz."<<endl;
+        cin.ignore();
+        getline(cin,yemek.eklenecek_malzemeler);
+
+        cout<<"Yemeğin Yapılışını Yazınız."<<endl;
+        cin.ignore();
+        getline(cin,yemek.yapilisi);
+
+        yaz.write((char*)&yemek,sizeof (yemek));
+
+        cout<<"Tekrar Yemek Tarifi Girmek İster misiniz?(e/h)"<<endl;
+        cin>>secim;
+    } while (secim=='e' || secim=='E');
+
+    yaz.close();
+}
+
+void Icecek_tarifi_ekle(){
+    ofstream yaz("icecektarifi.txt",ios::app);
+
+    char secim;
+    do{
+        cout<<"İçecek Adını Giriniz."<<endl;
+        cin.ignore();
+        getline(cin,icecek.adi);
+
+        cout<<"Eklenecek Malzemeleri Giriniz."<<endl;
+        cin.ignore();
+        getline(cin,icecek.eklenecek_malzemeler);
+
+        cout<<"İçeceğin Yapılışını Yazınız."<<endl;
+        cin.ignore();
+        getline(cin,icecek.yapilisi);
+
+        yaz.write((char*)&icecek,sizeof (icecek));
+
+        cout<<"Tekrar İçecek Tarifi Girmek İster misiniz?(e/h)"<<endl;
+        cin>>secim;
+    } while (secim=='e' || secim=='E');
+
+    yaz.close();
+}
+
+void corba_tarifi_ekle(){
+    ofstream yaz("corbatarifi.txt",ios::app);
+
+    char secim;
+    do{
+        cout<<"Çorba Adını Giriniz."<<endl;
+        cin.ignore();
+        getline(cin,corba.adi);
+
+        cout<<"Eklenecek Malzemeleri Giriniz."<<endl;
+        cin.ignore();
+        getline(cin,corba.eklenecek_malzemeler);
+
+        cout<<"Çorbanın Yapılışını Yazınız."<<endl;
+        cin.ignore();
+        getline(cin,corba.yapilisi);
+
+        yaz.write((char*)&corba,sizeof (corba));
+
+        cout<<"Tekrar Çorba Tarifi Girmek İster misiniz?(e/h)"<<endl;
+        cin>>secim;
+    } while (secim=='e' || secim=='E');
+
+    yaz.close();
+}
+
+void tatli_tarifi_ekle(){
+    ofstream yaz("tatlitarifi.txt",ios::app);
+
+    char secim;
+    do{
+        cout<<"Tatlı Adını Giriniz."<<endl;
+        cin.ignore();
+        getline(cin,tatli.adi);
+
+        cout<<"Eklenecek Malzemeleri Giriniz."<<endl;
+        getline(cin,tatli.eklenecek_malzemeler);
+
+        cout<<"Tatlı Yapılışını Yazınız."<<endl;
+        getline(cin,tatli.yapilisi);
+
+        yaz.write((char*)&tatli,sizeof (tatli));
+
+        cout<<"Tekrar Tatlı Tarifi Girmek İster misiniz?(e/h)"<<endl;
+        cin>>secim;
+    } while (secim=='e' || secim=='E');
+
+    yaz.close();
+}
+
+
+
+void ana_tarifi_oku() {
+    ifstream oku("anayemektarifi.txt");
+
+    if (oku.is_open()) {
+        while (oku.read(reinterpret_cast<char*>(&yemek), sizeof(yemek))) {
+            cout << "Yemek Adı: " << yemek.adi << "\nMalzemeleri: " << yemek.eklenecek_malzemeler << "\nYapılışı: " << yemek.yapilisi << "\n\n";
+        }
+    } else {
+        cout << "Okunacak Dosya Bulunamadı.";
+    }
+
+    oku.close();
+}
+
+void icecek_tarifi_oku() {
+    ifstream oku("icecektarifi.txt");
+
+    if (oku.is_open()) {
+        while (oku.read(reinterpret_cast<char*>(&icecek), sizeof(icecek))) {
+            cout << "İçecek Adı: " << icecek.adi << "\nMalzemeleri: " << icecek.eklenecek_malzemeler << "\nYapılışı: " << icecek.yapilisi << "\n\n";
+        }
+    } else {
+        cout << "Okunacak Dosya Bulunamadı.";
+    }
+
+    oku.close();
+}
+
+void corba_tarifi_oku() {
+    ifstream oku("corbatarifi.txt");
+
+    if (oku.is_open()) {
+        while (oku.read(reinterpret_cast<char*>(&corba), sizeof(corba))) {
+            cout << "Çorba Adı: " << corba.adi << "\nMalzemeleri: " << corba.eklenecek_malzemeler << "\nYapılışı: " << corba.yapilisi << "\n\n";
+        }
+    } else {
+        cout << "Okunacak Dosya Bulunamadı.";
+    }
+
+    oku.close();
+}
+
+void tatli_tarifi_oku(){
+    ifstream oku("tatlitarifi.txt");
+    string okunansonuc;
+    if (oku.is_open()) {
+        while (oku.read(reinterpret_cast<char*>(&tatli), sizeof(tatli))) {
+            cout << "Tatlı Adı: " << tatli.adi << "\nMalzemeleri: " << tatli.eklenecek_malzemeler << "\nYapılışı: " << tatli.yapilisi << "\n\n";
+        }
+    } else {
+        cout << "Okunacak Dosya Bulunamadı.";
+    }
+    oku.close();
+}
+
+
+
+void ana_tarifite_ara() {
+    ifstream oku("anayemektarifi.txt");
+    string arananAd;
+    cout << "Aranacak Yemeğin Adını giriniz." << endl;
+    getline(cin,arananAd);
+
+    bool bulundu = false;
+
+    while (oku >> yemek.adi) {
+        if (yemek.adi == arananAd) {
+            bulundu = true;
+            cout << "Yemek Adı: " << yemek.adi << endl;
+            cout << "Yemek Malzemeleri: " << yemek.eklenecek_malzemeler << endl;
+            cout << "Yemeğin Yapılışı: " << yemek.yapilisi << endl;
+            break;
+        }
+    }
+
+    if (!bulundu) {
+        cout << "Yemek bulunamadı." << endl;
+    }
+
+    oku.close();
+}
+
+void icecek_tarifite_ara() {
+    ifstream oku("icecektarifi.txt");
+    string arananAd;
+    cout << "Aranacak İçeceğin Adını giriniz." << endl;
+    getline(cin,arananAd);
+
+    bool bulundu = false;
+
+    while (oku >> icecek.adi) {
+        if (icecek.adi == arananAd) {
+            bulundu = true;
+            cout << "İçecek Adı: " << icecek.adi << endl;
+            cout << "İçecek Malzemeleri: " << icecek.eklenecek_malzemeler << endl;
+            cout << "İçecek Yapılışı: " << icecek.yapilisi << endl;
+            break;
+        }
+    }
+
+    if (!bulundu) {
+        cout << "İçecek bulunamadı." << endl;
+    }
+
+    oku.close();
+}
+
+void corba_tarifite_ara() {
+    ifstream oku("corbatarifi.txt");
+    string arananAd;
+    cout << "Aranacak Çorbanın Adını giriniz." << endl;
+    getline(cin,arananAd);
+
+    bool bulundu = false;
+
+    while (oku >> corba.adi) {
+        if (corba.adi == arananAd) {
+            bulundu = true;
+            cout << "Çorbanın Adı: " << corba.adi << endl;
+            cout << "Çorbanın Malzemeleri: " << corba.eklenecek_malzemeler << endl;
+            cout << "Çorbanın Yapılışı: " << corba.yapilisi << endl;
+            break;
+        }
+    }
+
+    if (!bulundu) {
+        cout << "Çorba bulunamadı." << endl;
+    }
+
+    oku.close();
+}
+
+void tatli_tarifite_ara() {
+    ifstream oku("tatlitarifi.txt");
+    string arananAd;
+    cout << "Aranacak Tatlının Adını giriniz." << endl;
+    getline(cin,arananAd);
+
+    bool bulundu = false;
+
+    while (oku >> tatli.adi) {
+        if (tatli.adi == arananAd) {
+            bulundu = true;
+            cout << "Tatlının Adı: " << tatli.adi << endl;
+            cout << "Tatlının Malzemeleri: " << tatli.eklenecek_malzemeler << endl;
+            cout << "Tatlının Yapılışı: " << tatli.yapilisi << endl;
+            break;
+        }
+    }
+
+    if (!bulundu) {
+        cout << "Tatlı bulunamadı." << endl;
+    }
+
+    oku.close();
+}
+
+
+
+void ana_tarifte_sil() {
+    ifstream oku("anayemektarifi.txt");
+    ofstream yaz("temp.txt");
+
+    string aranan_ad;
+    cout << "Silinecek yemeğin adını giriniz: ";
+    cin >> aranan_ad;
+
+    bool silindi = false;
+
+    while (oku >> yemek.adi) {
+        oku >> yemek.eklenecek_malzemeler >> yemek.yapilisi;
+
+        if (yemek.adi != aranan_ad) {
+            yaz << yemek.adi << " " << yemek.eklenecek_malzemeler << " " << yemek.yapilisi << "\n";
+        } else {
+            silindi = true;
+        }
+    }
+
+    if (silindi) {
+        cout << aranan_ad << " Adlı yemek silindi." << endl;
+    } else {
+        cout << aranan_ad << " Adlı yemek bulunamadı." << endl;
+    }
+
+    yaz.close();
+    oku.close();
+
+    remove("anayemektarifi.txt");
+    rename("temp.txt", "anayemektarifi.txt");
+}
+
+void icecek_tarifite_sil() {
+    ifstream oku("icecektarifi.txt");
+    ofstream yaz("temp1.txt");
+
+    string aranan_ad;
+    cout << "Silinecek içeceğin adını giriniz: ";
+    cin >> aranan_ad;
+
+    bool silindi = false;
+
+    while (oku >> icecek.adi) {
+        oku >> icecek.eklenecek_malzemeler >> icecek.yapilisi;
+
+        if (icecek.adi != aranan_ad) {
+            yaz << icecek.adi << " " << icecek.eklenecek_malzemeler << " " << icecek.yapilisi << "\n";
+        } else {
+            silindi = true;
+        }
+    }
+
+    if (silindi) {
+        cout << aranan_ad << " Adlı içecek silindi." << endl;
+    } else {
+        cout << aranan_ad << " Adlı içecek bulunamadı." << endl;
+    }
+
+    yaz.close();
+    oku.close();
+
+    remove("icecektarifi.txt");
+    rename("temp1.txt", "icecektarifi.txt");
+}
+
+void corba_tarifite_sil() {
+    ifstream oku("corbatarifi.txt");
+    ofstream yaz("temp2.txt");
+
+    string aranan_ad;
+    cout << "Silinecek çorbanın adını giriniz: ";
+    cin >> aranan_ad;
+
+    bool silindi = false;
+
+    while (oku >> corba.adi) {
+        oku >> corba.eklenecek_malzemeler >> corba.yapilisi;
+
+        if (corba.adi != aranan_ad) {
+            yaz << corba.adi << " " << corba.eklenecek_malzemeler << " " << corba.yapilisi << "\n";
+        } else {
+            silindi = true;
+        }
+    }
+
+    if (silindi) {
+        cout << aranan_ad << " Adlı çorba silindi." << endl;
+    } else {
+        cout << aranan_ad << " Adlı çorba bulunamadı." << endl;
+    }
+
+    yaz.close();
+    oku.close();
+
+    remove("corbatarifi.txt");
+    rename("temp2.txt", "corbatarifi.txt");
+}
+
+void tatli_tarifite_sil() {
+    ifstream oku("tatlitarifi.txt");
+    ofstream yaz("temp3.txt");
+
+    string aranan_ad;
+    cout << "Silinecek tatlı adını giriniz: ";
+    cin >> aranan_ad;
+
+    bool silindi = false;
+
+    while (oku >> tatli.adi) {
+        oku >> tatli.eklenecek_malzemeler >> tatli.yapilisi;
+
+        if (tatli.adi != aranan_ad) {
+            yaz << tatli.adi << " " << tatli.eklenecek_malzemeler << " " << tatli.yapilisi << "\n";
+        } else {
+            silindi = true;
+        }
+    }
+
+    if (silindi) {
+        cout << aranan_ad << " Adlı tatlı silindi." << endl;
+    } else {
+        cout << aranan_ad << " Adlı tatlı bulunamadı." << endl;
+    }
+
+    yaz.close();
+    oku.close();
+
+    remove("tatlitarifi.txt");
+    rename("temp3.txt", "tatlitarifi.txt");
+}
